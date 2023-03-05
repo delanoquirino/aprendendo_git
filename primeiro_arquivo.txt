@@ -1,0 +1,157 @@
+
+--- INTRODUÇÃO AO GIT ---
+
+// Versionamento
+	- Gerenciar diferentes versões no desenvolvimento de uma aplicação.
+	- Reverter estado anterior, comparar mudanças ao longo do tempo, quem modificou pela última vez, identificar quem introduziu e começou algum problema e também recuperar arquivos.
+
+// VCS local, CVCS e DVC
+	1. Sistemas locais de Controle de Versão
+		- Sistema simples usado para projetos pessoais.
+		- Copiar os arquivos para outro diretório.
+		- Propensa a muitos erros e falhas
+		- RCS( Revision Controle System)
+
+	2. Sistema Centralizados de Controle de Versão
+		- Sistema voltado para colobaração com outras pessoas.
+		- Subversion: único servidor que contém todos os arquivos e um número de clientes usando a partir desse lugar central.
+		- Controle sobre o que usuários estão fazendo. Adm têm controle sobre quem pode fazer o que.
+		- Sujeito a problemas quando servidor falhar.
+	
+	3. Sistema Distribuídos de Controle de Versão
+		- Duplicação local do repositório.
+		- Cada duplicação é uma forma d backup completo do projeto original.
+
+
+--- CARACTERÍSTICAS DO GIT ---
+
+// Características
+	1. Snapshots
+		- Ao fazer um commit, o Git basicamente tira uma foto de todos os seus arquivos e armazena uma referência. 
+		
+	2. Quase todas as operações são locais
+		- O Git opera em sua maioria localmente, evitando problemas quando se depende muito de uma rede.
+	
+	3. Integridade
+		- Integridade das informações sao protegidas por uma chave de verificação de integridade (checksum), garantindo que não ocorra perda de informação em movimentação ou que arquivos sejam corrompidos sem que o usuário perceba.
+	
+	4. Três estados
+		- Committed: Dados armazenados de forma segura em seu banco de dados local.
+		- Modified: Arquivo foi alterado mas não foi feito o commit no seu banco de dados.
+		- Staged (preparado): marcou a versão atual de um arquivo modificado para fazer parte do seu próximo commit.
+		
+		{ Seções: 
+			- Repositório Git: Onde contêm todos os arquivos que são comitados.
+			- Diretório de trabalho: Estão todos os arquivos modificáveis.
+			- Área de preparação: Onde os arquivos são preparados os arquivos modificados para serem enviados e atualizados ao repositório
+		}
+
+		- Fluxo: Arquivos são modificados no diretório de trabalho -> seleciona os arquivos que pretende comitar no repositório Git e envia para a área de preparação 			-> executa um commit -> envio dos arquivos na área de preparação para o repositório Git;	
+
+--- CONFIGURAÇÕES INICIAS ---
+	- Git config é onde podemos ver e atribuir variáveis de configurações que controlam como o git funciona.
+	- Três locais ondes podemos armazenar as varáveis:
+		/etc/config: Para todos os usuários do sistema.
+		~/.gitconfig: Para cada usuário.
+		git/config: Para cada diretório git.
+	- No windows o git procura pelo arquivo .gitconfig no diretório $HOME (C:\Users\$USER).
+	- Os três locais podem existir mas o mais próximo do .git possui prioridade sobre configuração git mais genérica.
+	- Config para identificar o name e e-mail para o git:
+		git config –global user.name “fulano”
+		git config –global user.email fulano@desenvolvedortop.com
+
+
+--- Primeiros Comandos ---
+
+	1. Clonando um repositórtio existente
+		git clone url
+
+	2. Inicializando um repositório
+		no diretório do projeto:
+			git init
+	
+	3. Monitorando os arquivos 
+		git add . (. Para add todos os arquivos modificados ou criados no commit)
+		git add "nome do arquivo"(Adiciona apenas o arquivo especifico)
+
+	4. Visualizar status do arquivo monitorado.
+		git status
+
+	5. Fazendo o commit
+		git commit -m "mensagem commit inicial"
+
+	6. Observar as mudanças feitas em arquivos monitorado.
+		git diff
+
+	7. Verifica o histórico dos commits efetuados.
+		git log
+
+--- Gitgnore e tags ---
+	
+	1. Ignorando arquivos
+		Para arquivos que desejamos que o git oculte, criamos um arquivo com nome .gitignore
+
+	2. Criando tags 
+		git tag -a "nome(exemplo: v1.0)"
+
+--- Enviando para o repositório remoto ---
+	
+	- Para enviar os arquivos modificados ao remoto do projeto utilizamos:
+		git push origin branch(nome da branch que vai ser enviado o arquivo)
+
+	- Exemplo: git push origin master
+
+--- Conflitos ---
+	
+	- Para evitar conflitos de mesmo arquivo alterado por usuários diferentes devemos usar "git pull origin master(nome da branch)
+	- É mostrado o conflito e devemos escolher qual alteração manter para depois executar "git add ." -> git commit - "resolver conflito"
+	- Finalizando com git push origin master.
+
+--- Mesclando Branches ---
+
+	Para unir arquivos de branches diferentes:
+		1. "git pull" para verificar alterações na branches atual e depois "git pull origin "outra branch" "
+
+		2. "git push origin master" para enviar as alterações das duas na branch master
+
+
+--- Pull Request ---
+
+	- Solicitações de pull permitem que você informe outras pessoas sobre as alterações por push feitas em uma ramificação de um repositório no GitHub
+
+--- Uso do Git em projetos em time ---
+	
+	-  Basicamente se usa 2 branches principais:
+		1. Master (ou main): branch padrão do projeto com a versão que está em produção.
+		
+		2. Develop: branch de desenvolvimento que vai sendo populada conforme as features forem sendo terminadas.
+
+		* Feature (que pode ser uma branch por atividade, por exemplo): branch que estão trabalhando no momento.
+
+
+	
+
+
+
+	
+
+
+
+	
+
+	
+
+
+
+
+	
+
+
+
+
+
+																							
+
+	
+		
+		
